@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CouponController;
 // home controller routes
 Route::get("/",[HomeController::class,"index"])->name("public.home");
 Route::get("/product/{pro_id}/",[HomeController::class,"productView"])->name("public.product.view");
@@ -21,6 +22,7 @@ Route::prefix("admin/")->middleware(["auth","isAdmin"])->group(function(){
     Route::get("/",[AdminController::class,"index"])->name("admin.dashboard");
     Route::Resource("category",CategoryController::class);
     Route::Resource("product",ProductController::class);
+    Route::Resource("coupon",CouponController::class);
 });
 
 // login routes

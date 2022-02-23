@@ -15,6 +15,8 @@ class AddressController extends Controller
     public function index()
     {
         //
+        $data=["address"=>Address::all()];
+        return view("admin.manageAddress",$data);
     }
 
     /**

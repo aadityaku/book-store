@@ -15,6 +15,8 @@ class CouponController extends Controller
     public function index()
     {
         //
+        $data=["coupon"=>Coupon::all()];
+        return view("admin.coupon",$data);
     }
 
     /**
@@ -33,9 +35,14 @@ class CouponController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $req)
     {
         //
+        $data=new Coupon();
+        $data->code=$req->code;
+        $data->amount=$req->amount;
+        $data->save();
+        return redirect()->route("coupon.index");
     }
 
     /**
